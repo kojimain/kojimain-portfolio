@@ -8,7 +8,7 @@ const routerBase =
   process.env.DEPLOY_ENV === 'gh-pages' ? '/kojimain-portfolio/' : '/'
 
 module.exports = {
-  mode: 'universal',
+  mode: 'spa',
 
   /*
   ** router
