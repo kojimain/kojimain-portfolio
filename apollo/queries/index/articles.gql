@@ -1,0 +1,14 @@
+query {
+  articles(
+    first: 3,
+    orderBy: createdAt_DESC
+  ) {
+    image {
+      url
+    }
+    id
+    title
+    body
+    createdAt
+  }
+}

@@ -83,5 +83,19 @@ module.exports = {
         })
       }
     }
+  },
+
+  /*
+  ** modules
+  */
+  modules: ['@nuxtjs/dotenv', '@nuxtjs/apollo'],
+
+  /*
+  ** apollo
+  */
+  apollo: {
+    clientConfigs: {
+      default: '~/apollo/client-configs/default.js'
+    }
   }
 }
