@@ -1,7 +1,7 @@
 <template>
   <div class="column is-4">
     <article class="card is-shady">
-      <a href="#">
+      <router-link :to="{ name: 'articles-id', params: { id: id } }">
         <div
           v-if="image_url"
           class="card-image">
@@ -20,7 +20,7 @@
             </div>
           </div>
         </div>
-      </a>
+      </router-link>
     </article>
   </div>
 </template>
