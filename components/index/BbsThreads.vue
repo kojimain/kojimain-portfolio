@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import BbsThread from './BbsThread'
 
 export default {
@@ -19,17 +20,15 @@ export default {
   },
   data() {
     return {
-      bbsThreads: [
-        {
-          id: 1,
-          title: 'スレッドタイトルsample1'
-        },
-        {
-          id: 2,
-          title: 'スレッドタイトルsample2'
-        }
-      ]
+      bbsThreads: []
     }
+  },
+  mounted() {
+    axios
+      .get(process.env.SIMPLEBBS_APP_ENDPOINT + '/api/bbs_threads.json')
+      .then(response => {
+        this.bbsThreads = response.data
+      })
   }
 }
 </script>
