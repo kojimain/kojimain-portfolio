@@ -1,7 +1,10 @@
 <template>
   <div class="column is-narrow">
     <article class="card is-shady">
-      <a href="#">
+      <a
+        :href="url"
+        target="_blank"
+        rel="noopener">
         <div class="card-content">
           <div class="content">
             <h3>{{ title }}</h3>
@@ -23,6 +26,9 @@ export default {
   computed: {
     title() {
       return this.bbsThread.title
+    },
+    url() {
+      return this.bbsThread.url
     }
   }
 }
