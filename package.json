@@ -19,9 +19,12 @@
     "@nuxtjs/apollo": "^4.0.0-rc2.3",
     "@nuxtjs/dotenv": "^1.3.0",
     "axios": "^0.18.0",
+    "c3": "^0.6.11",
     "cross-env": "^5.2.0",
+    "firebase": "^5.7.1",
     "marked": "^0.5.2",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vue-c3": "^1.2.11"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
