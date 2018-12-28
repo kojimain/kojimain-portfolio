@@ -52,7 +52,7 @@ export default {
       await firestore
         .collection('rasp_temperatures')
         .orderBy('sentAt', 'asc')
-        .limit(288)
+        .limit(12)
         .get()
         .then(querySnapshot => {
           this.temperatures = querySnapshot.docs.map(doc => {
