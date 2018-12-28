@@ -87,9 +87,11 @@ export default {
             type: 'timeseries',
             tick: {
               format: '%Y-%m-%d %H:%M',
+              count: 2,
               culling: {
                 max: 2
-              }
+              },
+              rotate: -60
             }
           }
         },
