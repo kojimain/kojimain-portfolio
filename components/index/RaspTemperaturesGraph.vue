@@ -2,12 +2,12 @@
   <section class="section">
     <h2 class="title has-text-centered">Graph</h2>
     <div class="has-text-centered">
-      <iframe
-        class="hatenablogcard"
-        style="width:100%;height:155px;margin:15px 0;max-width:680px;"
-        title="Raspberry Pi のCPU温度をfirebaseの Cloud Firestore に記録してVue.jsでグラフ表示する - kojimainjp’s blog"
-        src="https://hatenablog-parts.com/embed?url=https://kojimainjp.hatenablog.com/entry/2018/12/26/202942"
-        frameborder="0"
+      <iframe 
+        class="hatenablogcard" 
+        style="width:100%;height:155px;margin:15px 0;max-width:680px;" 
+        title="やっぱりfirebaseじゃなくてGoogleスプレッドシートにRaspberry Pi のCPU温度を収集してVue.jsでグラフ表示する - kojimainjp’s blog" 
+        src="https://hatenablog-parts.com/embed?url=https://kojimainjp.hatenablog.com/entry/2019/01/02/115501" 
+        frameborder="0" 
         scrolling="no"/>
     </div>
     <div class="columns is-centered">
@@ -22,17 +22,9 @@
 
 <script>
 import Vue from 'vue'
-import firebase from 'firebase/app'
-import 'firebase/firestore'
+import axios from 'axios'
 import VueC3 from 'vue-c3'
 import 'c3/c3.min.css'
-
-// firebase
-firebase.initializeApp({
-  projectId: 'portfolio-6edac'
-})
-const firestore = firebase.firestore()
-firestore.settings({ timestampsInSnapshots: true })
 
 export default {
   components: {
@@ -49,17 +41,15 @@ export default {
   },
   methods: {
     async getTemperatures() {
-      await firestore
-        .collection('rasp_temperatures')
-        .orderBy('sentAt', 'asc')
-        .limit(12)
-        .get()
-        .then(querySnapshot => {
-          this.temperatures = querySnapshot.docs.map(doc => {
-            const data = doc.data()
+      await axios
+        .get(
+          'https://sheets.googleapis.com/v4/spreadsheets/1PvOoiQinpBuhqi9RcjPs9dOdqXhaLX_LR402k_LhofE/values/Sheet1!A:B?key=AIzaSyBP28LQK0682kQzoPlsNWZhq-8fw2WFDBM'
+        )
+        .then(response => {
+          this.temperatures = response.data.values.map(dataValue => {
             return {
-              value: data.value,
-              sentAt: data.sentAt.toDate()
+              timestamp: new Date(dataValue[0]),
+              value: dataValue[1]
             }
           })
         })
@@ -72,7 +62,7 @@ export default {
           columns: [
             ['x'].concat(
               this.temperatures.map(t => {
-                return t.sentAt
+                return t.timestamp
               })
             ),
             ['温度(℃)'].concat(
