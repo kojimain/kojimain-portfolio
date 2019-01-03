@@ -2,12 +2,12 @@
   <section class="section">
     <h2 class="title has-text-centered">Graph</h2>
     <div class="has-text-centered">
-      <iframe 
-        class="hatenablogcard" 
-        style="width:100%;height:155px;margin:15px 0;max-width:680px;" 
-        title="やっぱりfirebaseじゃなくてGoogleスプレッドシートにRaspberry Pi のCPU温度を収集してVue.jsでグラフ表示する - kojimainjp’s blog" 
-        src="https://hatenablog-parts.com/embed?url=https://kojimainjp.hatenablog.com/entry/2019/01/02/115501" 
-        frameborder="0" 
+      <iframe
+        class="hatenablogcard"
+        style="width:100%;height:155px;margin:15px 0;max-width:680px;"
+        title="やっぱりfirebaseじゃなくてGoogleスプレッドシートにRaspberry Pi のCPU温度を収集してVue.jsでグラフ表示する - kojimainjp’s blog"
+        src="https://hatenablog-parts.com/embed?url=https://kojimainjp.hatenablog.com/entry/2019/01/02/115501"
+        frameborder="0"
         scrolling="no"/>
     </div>
     <div class="columns is-centered">
