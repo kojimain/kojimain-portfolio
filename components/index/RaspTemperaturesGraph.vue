@@ -43,7 +43,10 @@ export default {
     async getTemperatures() {
       await axios
         .get(
-          'https://sheets.googleapis.com/v4/spreadsheets/1PvOoiQinpBuhqi9RcjPs9dOdqXhaLX_LR402k_LhofE/values/Sheet1!A:B?key=AIzaSyBP28LQK0682kQzoPlsNWZhq-8fw2WFDBM'
+          'https://sheets.googleapis.com/v4/spreadsheets/' +
+            `${process.env.SPREADSHEET_ID}` +
+            '/values/Sheet1!A:B?key=' +
+            `${process.env.SPREADSHEET_API_KEY}`
         )
         .then(response => {
           this.temperatures = response.data.values.map(dataValue => {
