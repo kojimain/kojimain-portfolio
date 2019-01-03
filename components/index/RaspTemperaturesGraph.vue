@@ -13,7 +13,9 @@
     <div class="columns is-centered">
       <div class="column is-6 box">
         <div>
-          <vue-c3 :handler="handler"/>
+          <LineChart
+            :chart-data="chartData"
+            :options="chartOptions"/>
         </div>
       </div>
     </div>
@@ -21,26 +23,45 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import axios from 'axios'
-import VueC3 from 'vue-c3'
-import 'c3/c3.min.css'
+import VueCharts from 'vue-chartjs'
 
-export default {
-  components: {
-    VueC3
-  },
-  data() {
-    return {
-      temperatures: [],
-      handler: new Vue()
+const LineChart = {
+  extends: VueCharts.Line,
+  mixins: [VueCharts.mixins.reactiveProp],
+  props: {
+    chartData: {
+      type: Object,
+      default() {}
+    },
+    options: {
+      type: Object,
+      default() {}
     }
   },
   mounted() {
-    this.initGraph()
+    this.renderChart(this.chartData, this.options)
+  }
+}
+
+export default {
+  components: {
+    LineChart
+  },
+  data() {
+    return {
+      chartData: {
+        labels: [],
+        datasets: []
+      },
+      chartOptions: {}
+    }
+  },
+  mounted() {
+    this.getChartData()
   },
   methods: {
-    async getTemperatures() {
+    async getChartData() {
       await axios
         .get(
           'https://sheets.googleapis.com/v4/spreadsheets/' +
@@ -49,50 +70,24 @@ export default {
             `${process.env.SPREADSHEET_API_KEY}`
         )
         .then(response => {
-          this.temperatures = response.data.values.map(dataValue => {
-            return {
-              timestamp: new Date(dataValue[0]),
-              value: dataValue[1]
-            }
-          })
-        })
-    },
-    async initGraph() {
-      await this.getTemperatures()
-      const options = {
-        data: {
-          x: 'x',
-          columns: [
-            ['x'].concat(
-              this.temperatures.map(t => {
-                return t.timestamp
-              })
-            ),
-            ['温度(℃)'].concat(
-              this.temperatures.map(t => {
-                return t.value
-              })
-            )
-          ]
-        },
-        axis: {
-          x: {
-            type: 'timeseries',
-            tick: {
-              format: '%Y-%m-%d %H:%M',
-              count: 2,
-              culling: {
-                max: 2
-              },
-              rotate: -60
-            }
+          const dataValues = response.data.values
+          this.chartData = {
+            labels: dataValues.map(dataValue => {
+              const date = new Date(dataValue[0])
+              return date.toLocaleString()
+            }),
+            datasets: [
+              {
+                label: '温度(℃)',
+                borderColor: 'lightblue',
+                fill: false,
+                data: dataValues.map(dataValue => {
+                  return dataValue[1]
+                })
+              }
+            ]
           }
-        },
-        size: {
-          height: 300
-        }
-      }
-      this.handler.$emit('init', options)
+        })
     }
   }
 }
