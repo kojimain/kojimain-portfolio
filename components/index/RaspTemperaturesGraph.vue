@@ -81,6 +81,7 @@ export default {
                 label: '温度(℃)',
                 borderColor: 'lightblue',
                 fill: false,
+                lineTension: 0,
                 data: dataValues.map(dataValue => {
                   return dataValue[1]
                 })
