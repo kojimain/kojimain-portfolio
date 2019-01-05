@@ -14,7 +14,6 @@ module.exports = {
   ** router
   */
   router: {
-    mode: 'hash',
     base: process.env.DEPLOY_ENV === 'gh-pages' ? '/kojimain-portfolio/' : '/'
   },
 
