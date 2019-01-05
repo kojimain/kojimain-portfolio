@@ -1,21 +1,21 @@
 <template>
   <div>
-    <Articles/>
-    <BbsThreads/>
-    <RaspTemperaturesGraph/>
+    <Hero/>
+    <About/>
+    <Products/>
   </div>
 </template>
 
 <script>
-import Articles from '~/components/index/Articles'
-import BbsThreads from '~/components/index/BbsThreads'
-import RaspTemperaturesGraph from '~/components/index/RaspTemperaturesGraph'
+import Hero from '~/components/index/Hero'
+import About from '~/components/index/About'
+import Products from '~/components/index/Products'
 
 export default {
   components: {
-    Articles,
-    BbsThreads,
-    RaspTemperaturesGraph
+    Hero,
+    About,
+    Products
   }
 }
 </script>

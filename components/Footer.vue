@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer class="footer">
     <div class="content has-text-centered">
       <div class="control level-item">
         <a
@@ -12,6 +12,11 @@
           </div>
         </a>
       </div>
+    </div>
+    <div class="content has-text-centered">
+      <p>
+        ©︎2019 kojimain
+      </p>
     </div>
   </footer>
 </template>

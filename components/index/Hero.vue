@@ -1,5 +1,5 @@
 <template>
-  <header class="hero is-info is-small">
+  <div class="hero is-info">
     <div class="hero-body">
       <div class="container has-text-centered">
         <router-link :to="{ name: 'index' }">
@@ -10,5 +10,5 @@
         </p>
       </div>
     </div>
-  </header>
+  </div>
 </template>

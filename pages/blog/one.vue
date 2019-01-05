@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import articleGql from '~/apollo/queries/articles/_id/article.gql'
-import Article from '~/components/articles/_id/Article.vue'
+import articleGql from '~/apollo/queries/blog/one/article.gql'
+import Article from '~/components/blog/one/Article.vue'
 import PoweredByGraphCms from '~/components/PoweredByGraphCms.vue'
 
 export default {
@@ -17,7 +17,7 @@ export default {
       query: articleGql,
       variables() {
         return {
-          id: this.$route.params.id
+          id: this.$route.query.id
         }
       }
     }

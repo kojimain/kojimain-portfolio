@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import articlesGql from '~/apollo/queries/index/articles.gql'
+import articlesGql from '~/apollo/queries/blog/index/articles.gql'
 import Article from './Article'
 import PoweredByGraphCms from '~/components/PoweredByGraphCms'
 
