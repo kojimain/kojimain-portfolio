@@ -4,7 +4,7 @@
       href="https://graphcms.com/"
       target="_blank"
       rel="noopener">
-      <img src="https://storage.googleapis.com/graphcms-public/powered_by_graphcms.svg">
+      <img src="~/assets/img/logo/powered_by_graphcms.svg">
     </a>
   </div>
 </template>
