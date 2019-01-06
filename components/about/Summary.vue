@@ -34,6 +34,15 @@
             Twitter
           </span>
         </a>
+        <a
+          href="https://kojimainjp.hatenablog.com/"
+          target="_blank"
+          rel="noopener"
+          class="button">
+          <img
+            src="~/assets/img/logo/hatenablog.png"
+            width="96">
+        </a>
       </div>
       <div class="content">
         <p>
