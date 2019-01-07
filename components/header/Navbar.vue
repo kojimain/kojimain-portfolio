@@ -28,6 +28,11 @@
           class="navbar-item">
           Home
         </router-link>
+        <router-link
+          :to="{ name: 'about' }"
+          class="navbar-item">
+          About
+        </router-link>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             Products
