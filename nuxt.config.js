@@ -1,20 +1,6 @@
 const pkg = require('./package')
-const path = require('path')
-
-/*
-** gh-pagesならrouterBase変更
-*/
-const routerBase =
-  process.env.DEPLOY_ENV === 'gh-pages' ? '/kojimain-portfolio/' : '/'
 
 module.exports = {
-  /*
-  ** router
-  */
-  router: {
-    base: process.env.DEPLOY_ENV === 'gh-pages' ? '/kojimain-portfolio/' : '/'
-  },
-
   /*
   ** Headers of the page
   */
@@ -29,7 +15,7 @@ module.exports = {
       {
         rel: 'icon',
         type: 'image/x-icon',
-        href: path.join(routerBase, '/favicon.ico')
+        href: '/favicon.ico'
       },
       {
         rel: 'stylesheet',
