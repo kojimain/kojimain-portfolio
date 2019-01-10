@@ -44,11 +44,6 @@
               Graph
             </router-link>
             <router-link
-              :to="{ name: 'blog' }"
-              class="navbar-item">
-              Blog
-            </router-link>
-            <router-link
               :to="{ name: 'bbs' }"
               class="navbar-item">
               BBS
