@@ -1,6 +1,7 @@
 <template>
   <section class="section">
     <h2 class="title has-text-centered">BBS</h2>
+    <Detail/>
     <Loading v-if="loading"/>
     <div class="columns is-multiline">
       <BbsThread
@@ -13,11 +14,13 @@
 
 <script>
 import axios from 'axios'
+import Detail from './Detail'
 import Loading from '~/components/Loading'
 import BbsThread from './BbsThread'
 
 export default {
   components: {
+    Detail,
     Loading,
     BbsThread
   },
