@@ -3,7 +3,8 @@
     <div class="section">
       <div class="container">
         <Summary/>
-        <SkillSheet/>
+        <SkillCards
+          :skill-cards="skillCards"/>
       </div>
     </div>
   </div>
@@ -11,12 +12,30 @@
 
 <script>
 import Summary from '~/components/about/Summary'
-import SkillSheet from '~/components/about/SkillSheet'
+import SkillCards from '~/components/about/SkillCards'
+import skillCardsGql from '~/apollo/queries/about/skillCards.gql'
 
 export default {
   components: {
     Summary,
-    SkillSheet
+    SkillCards
+  },
+  asyncData(context) {
+    const apolloClient = context.app.apolloProvider.defaultClient
+    return apolloClient
+      .query({
+        query: skillCardsGql
+      })
+      .then(result => {
+        return {
+          skillCards: result.data.skillCards
+        }
+      })
+  },
+  data() {
+    return {
+      skillCards: []
+    }
   }
 }
 </script>

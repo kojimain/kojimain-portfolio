@@ -1,0 +1,13 @@
+query {
+  skillCards(
+    orderBy: createdAt_ASC
+  ) {
+    id
+    title
+    body
+    images {
+      id
+      url
+    }
+  }
+}
