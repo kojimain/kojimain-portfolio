@@ -48,6 +48,13 @@
               class="navbar-item">
               BBS
             </router-link>
+            <a
+              href="https://kojimain-cart.netlify.com/"
+              target="_blank"
+              rel="noopener"
+              class="navbar-item">
+              Cart
+            </a>
           </div>
         </div>
       </div>
